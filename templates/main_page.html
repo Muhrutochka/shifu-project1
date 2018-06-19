@@ -12,6 +12,9 @@
             {% for e in context_value %}
                 <li class="list-group-item">
                     {{ e.context  }}
+                   {{ e.title }}
+                    {{ e.slug }}
+                   <a class="align-right" href="element/{{ e.slug }}"> Зырим </a>
                 </li>
             {% endfor %}
         </ul>
