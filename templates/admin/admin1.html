@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action=".." method="GET">
+    <div class="form-group">
+    context: <input type="text" class="form-control name="context_value"><br>
+    </div>
+    <div class="form-group">
+    title: <input type="text" class="form-control name="title_value"><br>
+    </div>
+    <div class="form-group">
+    slug: <input type="text" class="form-control name="slug_value"><br>
+    </div>
+    <div class="form-group">
+    <input type="submit"class="btn btn-primary" value="Добавить">
+    </div>
+</form>
+
+{% endblock %}
+
