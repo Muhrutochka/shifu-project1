@@ -1,0 +1,21 @@
+{% extends "admin/AdminTemplate.html" %}
+{% block content %}
+
+<body>
+    {% if context_value %}
+        <ul class="list-group">
+            {% for e in context_value %}
+                <li class="list-group-item">
+                    {{ e.context  }}
+                   {{ e.title }}
+{#                    {{ e.slug }}#}
+                   <a class="align-right" href="/admin/articles/{{ e.slug }}"> {{ e.slug }} </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <br>
+    <a class="btn btn-primary" href="/admin/articles/add/" role="button">Добавить статью</a>
+</body>
+</html>
+{% endblock %}

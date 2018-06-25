@@ -10,22 +10,22 @@ from firstapp.models import Colombina
 
 
 # Сохраняем данные из формы в бaзу данных
-def form_set(request):
+def addArticles(request):
     a = request.GET.get('context_value', '')
     a_2 = request.GET.get('title_value', '')
     a_3 = request.GET.get('slug_value', '')
     if str(a) != '' or str(a_2) != '' or str(a_3) != '':
         i = Colombina.objects.create(context=a, title=a_2, slug=a_3)
         i.save()
-    return render(request, 'admin/admin1.html')
+    return render(request, 'admin/addArticles.html')
 
 # Отображение информации из базы данных на главную страницу
-def main_page(request):
+def articles(request):
     y = Colombina.objects.values_list().values()
     context = {
         'context_value': y,
     }
-    return render(request, 'user/main_page.html', context)
+    return render(request, 'admin/articles.html', context)
 
 # Отображение данных из поля контент
 def cnt(request, x):
@@ -49,4 +49,8 @@ def title(request):
      }
 #    return render(request, template, context)
     return render(request, 'user/main.html', context)
+
+# Отображение данных из поля title
+def adminka(request):
+    return render(request, 'admin/admin.html')
 

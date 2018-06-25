@@ -16,13 +16,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, re_path, include
-from firstapp.views import form_set, main_page, cnt, title
+from firstapp.views import addArticles, articles, cnt, title, adminka
 
 urlpatterns = [
     re_path('^admin_tools/', include('admin_tools.urls')),
-    path('admin/', admin.site.urls),
-    path('admin/articles/', main_page),
-    path('admin/articles/add/', form_set),
+    path('admin1/', admin.site.urls),
+    path('admin/', adminka),
+    path('admin/articles/', articles),
+    path('admin/articles/add/', addArticles),
     path('', title),
     re_path('^admin/articles/(?P<x>\w+)/$', cnt),
     re_path('^articles/(?P<x>\w+)/$', cnt),
