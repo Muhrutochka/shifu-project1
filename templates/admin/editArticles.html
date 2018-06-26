@@ -1,0 +1,23 @@
+{% extends "admin/AdminTemplate.html" %}
+{% block content %}
+
+<form action="" method="POST"> {% csrf_token %}
+    <div class="form-group">
+    id <input type="text" class="form-control" name="id_value" value={{id}} readonly><br>
+    </div>
+    <div class="form-group">
+    context <input type="text" class="form-control" name="context_value" value={{context}}><br>
+    </div>
+    <div class="form-group">
+    title <input type="text" class="form-control" name="title_value" value={{title}}><br>
+    </div>
+    <div class="form-group">
+    slug <input type="text" class="form-control" name="slug_value" value={{slug}}><br>
+    </div>
+    <div class="form-group">
+    <input type="submit"class="btn btn-primary" value="Сохранить">
+    </div>
+</form>
+
+{% endblock %}
+

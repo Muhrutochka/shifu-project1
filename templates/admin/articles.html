@@ -3,19 +3,46 @@
 
 <body>
     {% if context_value %}
-        <ul class="list-group">
+{% comment %}        <ul class="list-group">{% endcomment %}
+             <table class="table-striped">
+              <thead>
+                <tr class="d-flex">
+{% comment %}                  <th scope="col">#</th>{% endcomment %}
+                  <th class="col-3">Context</th>
+                  <th class="col-3">Title</th>
+                  <th class="col-3">Slug</th>
+                </tr>
+              </thead>
+              <tbody>
             {% for e in context_value %}
-                <li class="list-group-item">
-                    {{ e.context  }}
-                   {{ e.title }}
-{#                    {{ e.slug }}#}
-                   <a class="align-right" href="/admin/articles/{{ e.slug }}"> {{ e.slug }} </a>
-                </li>
+                <tr class="d-flex">
+                {% comment %}                  <th scope="row">1</th>{% endcomment %}
+                  <td class="col-sm-3">  {{ e.context }}</td>
+                  <td class="col-sm-3">  {{ e.title }}</td>
+                  <td class="col-sm-3">  <a class="align-right" href="/admin/articles/{{ e.slug }}"> {{ e.slug }}</td>
+                  <td>  <a class="btn btn-success" href="/articles/{{ e.slug }}" role="button">Просмотреть</a></td>
+                  <td>  <a class="btn btn-primary" href="/admin/articles/edit/{{ e.id }}" role="button">Редактировать</a></td>
+                  <td>  <a class="btn btn-danger" href="/admin/articles/delete/{{ e.id }}" role="button">Удалить</a></td>
+                </tr>
             {% endfor %}
-        </ul>
+              </tbody>
+            </table>
+
+{% comment %}                <li class="list-group-item">{% endcomment %}
+{% comment %}
+                    {{ e.context  }}
+                    {{ e.title }}
+{% endcomment %}
+{#                    {{ e.slug }}#}
+{% comment %}                   <a class="align-right" href="/admin/articles/{{ e.slug }}"> {{ e.slug }} </a>{% endcomment %}
+{% comment %}                </li>{% endcomment %}
+
+{% comment %}        </ul>{% endcomment %}
     {% endif %}
     <br>
     <a class="btn btn-primary" href="/admin/articles/add/" role="button">Добавить статью</a>
 </body>
 </html>
 {% endblock %}
+
+

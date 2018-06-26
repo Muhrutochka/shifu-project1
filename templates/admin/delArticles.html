@@ -1,0 +1,23 @@
+{% extends "admin/AdminTemplate.html" %}
+{% block content %}
+    <form action="" method="POST"> {% csrf_token %}
+             <table class="table-striped">
+              <thead>
+                <tr class="d-flex">
+                  <th class="col-4">Context</th>
+                  <th class="col-4">Title</th>
+                  <th class="col-4">Slug</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr class="d-flex">
+                  <td class="col-sm-4">  {{ context }}</td>
+                  <td class="col-sm-4">  {{ title }}</td>
+                  <td class="col-sm-4">  {{ slug }}</td>
+                </tr>
+              </tbody>
+            </table>
+        <p>Удалить запись?</p>
+        <input type="submit"class="btn btn-danger" value="Удалить">
+        </form>
+{% endblock %}

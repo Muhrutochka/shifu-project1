@@ -16,7 +16,9 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, re_path, include
-from firstapp.views import addArticles, articles, cnt, title, adminka
+from firstapp.views import addArticles, articles, cnt, title, adminka, editArticles, delArticles
+
+app_name = 'firstapp'
 
 urlpatterns = [
     re_path('^admin_tools/', include('admin_tools.urls')),
@@ -25,6 +27,9 @@ urlpatterns = [
     path('admin/articles/', articles),
     path('admin/articles/add/', addArticles),
     path('', title),
+    re_path('^admin/articles/edit/(?P<x>\w+)/$', editArticles),
+    re_path('^admin/articles/delete/(?P<x>\w+)/$', delArticles),
     re_path('^admin/articles/(?P<x>\w+)/$', cnt),
     re_path('^articles/(?P<x>\w+)/$', cnt),
+
 ]
