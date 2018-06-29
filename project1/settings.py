@@ -12,9 +12,19 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+PROJECT_ROOT = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+ADMINS = (
+    # ('Your Name', 'your_email@example.com'),
+)
+
+MANAGERS = ADMINS
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+LOCALE_PATHS = ( os.path.join(PROJECT_ROOT, 'locale'), )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -42,7 +52,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'firstapp',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.vk',
+    'firstapp'
 ]
 
 MIDDLEWARE = [
@@ -60,8 +76,10 @@ ROOT_URLCONF = 'project1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates', ],
-#        'APP_DIRS': True,
+        'DIRS': ['./templates',
+                 os.path.join(PROJECT_ROOT, 'templates', 'plain', 'example'),
+                 ],
+        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -137,3 +155,12 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 ADMIN_TOOLS_MENU = 'firstapp.menu.CustomMenu'
 ADMIN_TOOLS_INDEX_DASHBOARD = 'firstapp.dashboard.CustomIndexDashboard'
 ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'firstapp.dashboard.CustomAppIndexDashboard'
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'home'
