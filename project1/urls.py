@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', adminka),
     path('admin/articles/', articles),
     path('admin/articles/add/', addArticles),
-    # path('', title),
+    path('', title),
     re_path('^admin/articles/edit/(?P<x>\w+)/$', editArticles),
     re_path('^admin/articles/delete/(?P<x>\w+)/$', delArticles),
     re_path('^admin/articles/(?P<x>\w+)/$', cnt),

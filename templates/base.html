@@ -18,7 +18,20 @@
     <title>{% block title %}Super puper site{% endblock %}</title>
 
 </head>
+
 <body>
+    <div>
+      <strong>Аутентификация:</strong>
+      <ul>
+	{% if user.is_authenticated %}
+{#	<li><a href="{% url 'account_email' %}">Change E-mail</a></li>#}
+	<li><a href="{% url 'account_logout' %}">Выйти</a></li>
+	{% else %}
+	<li><a href="{% url 'account_login' %}">Войти</a></li>
+	<li><a href="{% url 'account_signup' %}">Зарегистрироваться</a></li>
+	{% endif %}
+      </ul>
+    </div>
     <div id="content">
         {% block content %}{% endblock %}
     </div>

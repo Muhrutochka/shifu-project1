@@ -2,6 +2,17 @@
 
 {% block content %}
 <h1>Super Puper Project</h1>
-
-<p>Здраствуйте, зарегистрируйтесь пожалуйста</p>
+    {% if context_value %}
+        <ul class="list-group">
+            {% for e in context_value %}
+                <li class="list-group-item">
+{#                    {{ e.context  }}#}
+{#                   {{ e.title }}#}
+{#                    {{ e.slug }}#}
+                   <a class="align-right" href="articles/{{ e.slug }}"> {{ e.title }} </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{#<p>Здраствуйте, зарегистрируйтесь пожалуйста</p>#}
 {% endblock %}

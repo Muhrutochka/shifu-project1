@@ -8,7 +8,7 @@
 {#                    {{ e.context  }}#}
 {#                   {{ e.title }}#}
 {#                    {{ e.slug }}#}
-                   <a class="align-right" href="articles/{{ e.slug }}"> {{ e.title }} </a>
+                   <a class="align-right" href="articles/{{ e.slug }}"> <h2>{{ e.title|truncatechars:40 }} </h2></a>
                 </li>
             {% endfor %}
         </ul>
