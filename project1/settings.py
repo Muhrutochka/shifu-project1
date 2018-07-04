@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.vk',
     'firstapp'
 ]
@@ -86,6 +86,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'allauth.account.context_processors.account',
+                # 'allauth.socialaccount.context_processors.socialaccount',
             ],
             'loaders': [
                 'admin_tools.template_loaders.Loader',
@@ -161,6 +163,10 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
-SITE_ID = 1
+SITE_ID = 2
 
 LOGIN_REDIRECT_URL = 'home'
+
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
+# SECURE_SSL_REDIRECT = True
+
